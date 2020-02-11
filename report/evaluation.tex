@@ -1,0 +1,25 @@
+\section{Evaluation}
+
+\subsection{Research Questions}
+We define 3 metrics for our evaluation, based on different challenges and limitations we faced with in mutation testing.
+\begin{itemize} 
+\item Percentage of source code files that our framework is able to mutate in each project. 
+\item Percentage of created mutants which are syntactically correct
+\item Percentage of tests failing on a mutant. 
+\item Performance
+\end{itemize}
+
+\subsection{Subject Programs}
+We are going to evaluate our framework on 5 subject programs with different code/test sizes in the later half of the project. For mid point evaluation, we only evaluated our incomplete implementation on 1 subject program. 
+
+\subsection{Tool Applicability}
+
+We assume that our original program is syntactically correct and compilable. Otherwise, our first and second metrics would be meaningless.  
+
+\subsection{Tool Correctness}
+We defined the first metric to measure how well our AST transformation and pattern matching process works. As for now, our algorithm is restricted to files containing one class. Second metric is measuring the effectiveness of our mutation operators and their probabilistic selection.
+\subsection{Test Coverage Analysis}
+Our third metric is representing quality of the test suite coverage. 
+\subsection{Performance}
+As for performance we are going to measure ratio of time consumed (in seconds) for mutating the program versus number of code lines. 
+

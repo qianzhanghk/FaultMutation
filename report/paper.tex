@@ -1,0 +1,157 @@
+
+
+
+
+
+%-----------------------------------------------------------------------------
+%
+%               Template for sigplanconf LaTeX Class
+%
+% Name:         sigplanconf-template.tex
+%
+% Purpose:      A template for sigplanconf.cls, which is a LaTeX 2e class
+%               file for SIGPLAN conference proceedings.
+%
+% Guide:        Refer to "Author's Guide to the ACM SIGPLAN Class,"
+%               sigplanconf-guide.pdf
+%
+% Author:       Paul C. Anagnostopoulos
+%               Windfall Software
+%               978 371-2316
+%               paul@windfall.com
+%
+% Created:      15 February 2005
+%
+%-----------------------------------------------------------------------------
+
+
+\documentclass[preprint]{sig-alternate}
+
+% The following \documentclass options may be useful:
+
+% preprint      Remove this option only once the paper is in final form.
+% 10pt          To set in 10-point type instead of 9-point.
+% 11pt          To set in 11-point type instead of 9-point.
+% numbers       To obtain numeric citation style instead of author/year.
+
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{color}
+\usepackage[normalem]{ulem}
+
+\newcommand{\tool}{\textsc{BigDelta}\xspace}
+\newcommand{\fixme} [1] {\textcolor{red}{{\it FIXME}: #1}}
+\newcommand{\codefont}[1]{\footnotesize{\texttt{#1}}\normalsize}
+\newcommand{\todo} [1]{\textcolor{blue}{{\sf TODO}: #1}}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\usepackage{times}
+\usepackage{array}
+\usepackage{url}
+\usepackage{float}
+\usepackage{subfigure}
+
+\usepackage{pgfplots}
+\usepackage{filecontents}
+\usetikzlibrary{patterns}
+\newcommand{\cL}{{\cal L}}
+\lstdefinelanguage{Scala}{
+  keywords={typeof, new, true, false, catch,def,val, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export,extends, boolean, throw, implements, import, this, abstract},
+  ndkeywordstyle=\color{dkgreen}\bfseries,
+  otherkeywords={+, =>,<=, ==, >,< , ||},
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+
+\lstset{frame=tb,
+  language=Scala,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3,
+  numbers=left,
+  xleftmargin=2em,
+  framexleftmargin=1.5em
+}
+\input{commands}
+\begin{document}
+
+\special{papersize=8.5in,11in}
+\setlength{\pdfpageheight}{\paperheight}
+\setlength{\pdfpagewidth}{\paperwidth}
+
+% Uncomment the publication rights you want to use.
+%\publicationrights{transferred}
+%\publicationrights{licensed}     % this is the default
+%\publicationrights{author-pays}
+
+%\titlebanner{banner above paper title}        % These are ignored unless
+%\preprintfooter{short description of paper}   % 'preprint' option specified.
+
+\title{A Configurable Mutation Framework for Scala}
+
+\numberofauthors{1} %  in this sample file, there are a *total*
+% of EIGHT authors. SIX appear on the 'first-page' (for formatting
+% reasons) and the remaining two appear in the \additionalauthors section.
+%
+\author{
+% You can go ahead and credit any number of authors here,
+% e.g. one 'row of three' or two rows (consisting of one row of three
+% and a second row of one, two or three).
+%
+% The command \alignauthor (no curly braces needed) should
+% precede each author name, affiliation/snail-mail address and
+% e-mail address. Additionally, tag each line of
+% affiliation/address with \affaddr, and tag the
+% e-mail address with \email.
+%
+% 1st. author
+\alignauthor
+ Muhammad Ali Gulzar, Shaghayegh Mardani \\
+ \vspace{5mm}
+ \affaddr{University of California, Los Angeles}\\
+% \email{ {\normalsize{\texttt\{gulzar, miryung\}@cs.ucla.edu}}}
+}
+
+\maketitle
+
+\begin{abstract}
+Importance of testing software programs is clear for everyone familiar with programming. Even after testing the program with large number of test cases, one cannot be sure that program is bug free. Mutation testing has been widely used to measure the quality of an existing test suite for a program.  A failing test case reveals the bug which was introduced by mutation operator. We can also define a coverage criteria by measuring the ratio of mutants that are killed by the test suite to the total number of compilable mutants. In this project, we have developed a framework for mutation testing of Scala programs, in particular Spark programs. As described above, this framework can be used by any Scala developer for measuring quality of their test suite and its coverage for any Scala program.
+
+This work is driven, mainly, from two reasons. First, there is no available mutation framework for Scala or Spark. Second, developers often need to inject bugs into their Spark program for testing their applications, though it is not straightforward to do so. Spark programs are written in terms of closures and a user only want to mutate user written code. By developing such framework we can automate the process of seeding bugs at the level of arithmetic operators and introduce location targeted mutations. Furthermore, we enable user to define more generalized mutation operators. In order to achieve a better measurement, we want to create as many distinct mutants as possible. To do so, we add a probabilistic method for choosing mutation operators to introduce bugs evenly over various mutants. 
+\end{abstract}
+\input{intro}
+\input{related}
+\input{approach}
+\input{evaluation}
+\input{conclusion}
+
+\appendix
+\section{Appendix Title}
+Tool Usage 
+
+% We recommend abbrvnat bibliography style.
+
+\bibliographystyle{abbrv}
+\bibliography{sigproc}  
+
+\end{document}
