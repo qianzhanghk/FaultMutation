@@ -1,3 +1,3 @@
 # FaultMutation
 
-This is automatically generate faulty versions of subjects.
+This tool automatically generates faulty versions of subjects.
